@@ -84,10 +84,10 @@ export class AxiosHttpClient implements HttpClient {
     config.headers = {
       ...config.headers,
       ...this.headers,
-      ...(tokenOrNull && {
-        Authorization: `Bearer ${tokenOrNull}`,
-      }),
-    };
+    } as AxiosRequestHeaders;
+    if (tokenOrNull) {
+      config.headers['Authorization'] =  `Bearer ${tokenOrNull}`;
+    }
     return config;
   };
 

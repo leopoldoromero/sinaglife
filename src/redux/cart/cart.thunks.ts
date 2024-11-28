@@ -2,20 +2,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import container from '../../DiContainer';
 import { DefaultState } from '../store';
 import { retrieveCart } from './cart.slice';
-import { CartUpdateAction, CartValidateDiscountRequestDTO, CreateCartRequestDTO, GetCartByCustomerDTO, GetCartResponseDTO, UpdateCartItemRequestDTO } from '@modules/cart/cart.dtos';
 import { StorageHandlerHelper } from 'shared/helpers';
-import { CartService } from '@modules/cart/application/cart.service';
 import { snackbarActions } from '../snackbar/snackbar.slice';
+import { CartRepository, CartUpdateAction, CartValidateDiscountInput, CreateCartInput, GetCartByCustomerDTO, GetCartOutput, UpdateCartItemInput } from '@modules/cart/domain/CartRepository';
 
-const cartService = container.get<CartService>('CartService');
+const cartService = container.get<CartRepository>('CartRepository');
 
 export const createCart = createAsyncThunk<
-  GetCartResponseDTO,
-  { cartData: CreateCartRequestDTO },
+  GetCartOutput,
+  { cartData: CreateCartInput },
   { rejectValue: string }
 >('cart/create', async ({ cartData }, thunkApi) => {
   try {
-    const createdCart: GetCartResponseDTO = await cartService.create(cartData);
+    const createdCart: GetCartOutput = await cartService.create(cartData);
     thunkApi.dispatch(snackbarActions.success('Producto añadido al carrito'));
     StorageHandlerHelper.save('cart_id', createdCart?.id);
     return createdCart;
@@ -25,12 +24,12 @@ export const createCart = createAsyncThunk<
 });
 
 export const updateCartItems = createAsyncThunk<
-  GetCartResponseDTO,
-  { cartData: UpdateCartItemRequestDTO },
+  GetCartOutput,
+  { cartData: UpdateCartItemInput },
   { rejectValue: string }
 >('cart/update-items', async ({ cartData }, thunkApi) => {
   try {
-    const createdCart: GetCartResponseDTO = await cartService.updateItems(cartData);
+    const createdCart: GetCartOutput = await cartService.updateItems(cartData);
     if (cartData.action === CartUpdateAction.ADD) {
       thunkApi.dispatch(snackbarActions.success('Producto añadido al carrito'));
     } else {
@@ -55,7 +54,7 @@ export const removeCart = createAsyncThunk('cart/remove', async (_, thunkApi) =>
 
 export const getCart = createAsyncThunk('cart/get', async (_, thunkApi) => {
   try {
-    const cartId = StorageHandlerHelper.retrieve('cart_id');
+    const cartId = StorageHandlerHelper.retrieve<string>('cart_id');
     if (cartId) {
       const cartOrNull = await cartService.get(cartId);
       if (cartOrNull && cartOrNull.id) {
@@ -86,12 +85,12 @@ export const getCartByCustomerId = createAsyncThunk<unknown, { data: GetCartByCu
 );
 
 export const validateDiscountToCart = createAsyncThunk<
-  GetCartResponseDTO,
-  { cartData: CartValidateDiscountRequestDTO },
+  GetCartOutput,
+  { cartData: CartValidateDiscountInput },
   { rejectValue: string }
 >('cart/add-discount', async ({ cartData }, thunkApi) => {
   try {
-    const createdCart: GetCartResponseDTO = await cartService.validateDiscount(cartData);
+    const createdCart: GetCartOutput = await cartService.validateDiscount(cartData);
     thunkApi.dispatch(snackbarActions.success('Cupon validado correctamente'));
     return createdCart;
   } catch (error) {

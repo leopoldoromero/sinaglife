@@ -1,4 +1,3 @@
-import { CartService } from "@modules/cart/application/cart.service";
 import { ApiCartRepository } from "@modules/cart/infrastructure/ApiCartRepository";
 import { UserRepository } from "@modules/user/domain/UserRepository";
 import { ApiUserRepository } from "@modules/user/infrastructure/ApiUserRepository";
@@ -24,10 +23,9 @@ const container = new Container();
 const axiosHttpClient = new AxiosHttpClient();
 const userRepository: UserRepository = new ApiUserRepository(axiosHttpClient);
 const cartRepository = new ApiCartRepository(axiosHttpClient);
-const cartService = new CartService(cartRepository);
 
 container.bind('AxiosHttpClient', axiosHttpClient);
 container.bind('UserRepository', userRepository);
-container.bind('CartService', cartService);
+container.bind('CartRepository', cartRepository);
 
 export default container;

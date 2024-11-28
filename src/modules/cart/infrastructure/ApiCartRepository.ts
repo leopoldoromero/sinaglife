@@ -1,21 +1,6 @@
 import { HttpClient } from 'shared/infrastructure/AxiosHttpClient';
-import {
-  CartValidateDiscountRequestDTO,
-  CreateCartRequestDTO,
-  GetCartResponseDTO,
-  UpdateCartItemRequestDTO,
-} from '../cart.dtos';
 import { Cart } from '../domain/Cart';
-
-export interface CartRepository {
-  create(data: CreateCartRequestDTO): Promise<GetCartResponseDTO>;
-  updateItems(data: UpdateCartItemRequestDTO): Promise<GetCartResponseDTO>;
-  get(cartId: string): Promise<Cart>;
-  validateDiscount(data: CartValidateDiscountRequestDTO): Promise<GetCartResponseDTO>;
-  remove(cartId: string): Promise<void>;
-  addCustomerId(cartId: string): Promise<void>;
-  getByCustomerId(customerId: string): Promise<Cart>;
-}
+import { CartRepository, CartValidateDiscountInput, CreateCartInput, GetCartOutput, UpdateCartItemInput } from '../domain/CartRepository';
 
 export class ApiCartRepository implements CartRepository {
   private httpClient: HttpClient;
@@ -25,11 +10,11 @@ export class ApiCartRepository implements CartRepository {
     this.httpClient = httpClient;
   }
 
-  async create(data: CreateCartRequestDTO): Promise<GetCartResponseDTO> {
+  async create(data: CreateCartInput): Promise<GetCartOutput> {
     return this.httpClient.post(`${this.endpoint}`, data);
   }
 
-  async updateItems(data: UpdateCartItemRequestDTO): Promise<GetCartResponseDTO> {
+  async updateItems(data: UpdateCartItemInput): Promise<GetCartOutput> {
     return this.httpClient.put(`${this.endpoint}/items`, data);
   }
 
@@ -41,7 +26,7 @@ export class ApiCartRepository implements CartRepository {
     return this.httpClient.get<Cart>(`${this.endpoint}/customer/${customerId}`);
   }
 
-  async validateDiscount(data: CartValidateDiscountRequestDTO): Promise<GetCartResponseDTO> {
+  async validateDiscount(data: CartValidateDiscountInput): Promise<GetCartOutput> {
     return this.httpClient.put(`${this.endpoint}/${data.id}/discount`, data);
   }
 
