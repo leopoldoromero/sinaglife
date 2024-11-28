@@ -1,0 +1,5 @@
+export enum SnackbarTypes {
+  SUCCESS = 'SNACKBAR_SUCCESS',
+  ERROR = 'SNACKBAR_ERROR',
+  CLEAR = 'SNACKBAR_CLEAR',
+}
