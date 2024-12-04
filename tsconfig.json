@@ -25,6 +25,9 @@
       "@modules/*": ["modules/*"],
       "@lib/*": ["lib/*"],
       "@theme/*": ["theme/*"],
+      "@redux/*": ["redux/*"],
+      "@hooks/*": ["hooks/*"],
+      "@shared/*": ["shared/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

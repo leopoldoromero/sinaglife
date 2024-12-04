@@ -20,6 +20,19 @@ export type PaddingProps = {
   pb?: ExtendedSize;
   pl?: ExtendedSize;
 };
+
+export type MarginStyledProps = {
+  $mt?: ExtendedSize;
+  $mr?: ExtendedSize;
+  $mb?: ExtendedSize;
+  $ml?: ExtendedSize;
+};
+export type PaddingStyledProps = {
+  $pt?: ExtendedSize;
+  $pr?: ExtendedSize;
+  $pb?: ExtendedSize;
+  $pl?: ExtendedSize;
+};
 export type SpacingProps = PaddingProps & MarginProps;
 const values = {
   xs: '0.5rem',
@@ -29,18 +42,18 @@ const values = {
   xl: '1.5rem',
   xxl: '2rem',
 };
-export const margin = css<MarginProps>`
-  margin-top: ${(p: MarginProps) => (p.mt ? values[p.mt] : null)};
-  margin-right: ${(p: MarginProps) => (p.mr ? values[p.mr] : null)};
-  margin-bottom: ${(p: MarginProps) => (p.mb ? values[p.mb] : null)};
-  margin-left: ${(p: MarginProps) => (p.ml ? values[p.ml] : null)};
+export const margin = css<MarginStyledProps>`
+  margin-top: ${(p: MarginStyledProps) => (p.$mt ? values[p.$mt] : null)};
+  margin-right: ${(p: MarginStyledProps) => (p.$mr ? values[p.$mr] : null)};
+  margin-bottom: ${(p: MarginStyledProps) => (p.$mb ? values[p.$mb] : null)};
+  margin-left: ${(p: MarginStyledProps) => (p.$ml ? values[p.$ml] : null)};
 `;
 
-export const padding = css<PaddingProps>`
-  padding-top: ${(p: PaddingProps) => (p.pt ? values[p.pt] : null)};
-  padding-right: ${(p: PaddingProps) => (p.pr ? values[p.pr] : null)};
-  padding-bottom: ${(p: PaddingProps) => (p.pb ? values[p.pb] : null)};
-  padding-left: ${(p: PaddingProps) => (p.pl ? values[p.pl] : null)};
+export const padding = css<PaddingStyledProps>`
+  padding-top: ${(p: PaddingStyledProps) => (p.$pt ? values[p.$pt] : null)};
+  padding-right: ${(p: PaddingStyledProps) => (p.$pr ? values[p.$pr] : null)};
+  padding-bottom: ${(p: PaddingStyledProps) => (p.$pb ? values[p.$pb] : null)};
+  padding-left: ${(p: PaddingStyledProps) => (p.$pl ? values[p.$pl] : null)};
 `;
 export const customStyles = css<{
   customStyles?: CSSObject;

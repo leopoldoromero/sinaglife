@@ -1,4 +1,4 @@
-import { environment } from '../constants';
+import { environment } from '../../constants';
 
 const STORE_ROUTE = '/tienda';
 const routes = {

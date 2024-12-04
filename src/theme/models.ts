@@ -18,8 +18,12 @@ export type Alignment = {
   y: VerticalAlignment;
 };
 
-export interface ICustomStyles {
+export interface CustomStylesProps {
   customStyles?: CustomStyles;
+}
+
+export interface CustomStylesStyledProps {
+  $customStyles?: CustomStyles;
 }
 
 export interface InputBaseProps {
