@@ -1,8 +1,8 @@
 'use client';
 
 import styled, { css } from 'styled-components';
-import { ButtonVariant } from './Button.models';
 import { margin, MarginStyledProps, padding, PaddingStyledProps, Shape, Size } from '../../theme';
+import { ButtonVariant } from './Button';
 
 const setSize = (size: Size, variant: ButtonVariant) => {
   switch (size) {

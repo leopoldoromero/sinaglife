@@ -1,14 +1,16 @@
 'use client'
 
 import styled from 'styled-components';
-import { flex, margin, padding } from '../../theme';
-import { StyledFormProps } from './Form';
+import { CustomStylesStyledProps, flex, FlexStyledProps, margin, MarginStyledProps, padding, PaddingStyledProps } from '../../theme';
 
-export const StyledBlock = styled.form<StyledFormProps>`
-  width: ${(p) => p.width ?? null};
-  height: ${(p) => p.height ?? null};
+export const StyledForm = styled.form<{
+  $width?: string;
+  $height?: string;
+} & FlexStyledProps & MarginStyledProps & PaddingStyledProps & CustomStylesStyledProps>`
+  width: ${(p) => p.$width ?? null};
+  height: ${(p) => p.$height ?? null};
   ${flex};
   ${margin};
   ${padding};
-  ${(p) => p.customStyles && p.customStyles}
+  ${(p) => p.$customStyles && p.$customStyles}
 `;

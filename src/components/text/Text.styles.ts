@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { margin, MarginStyledProps } from '../../theme';
+import { CustomStylesStyledProps, margin, MarginStyledProps } from '../../theme';
 
 export const TexContainer = styled.span<{
   $fontSize?: string;
@@ -14,8 +14,7 @@ export const TexContainer = styled.span<{
   $whiteSpace?: string;
   $fontFamily?: string;
   $cursor?: string;
-  $customStyles?: string;
-} & MarginStyledProps>`
+} & MarginStyledProps & CustomStylesStyledProps>`
   text-transform: ${(p) => (p.$isUppercase ? 'uppercase' : 'none')};
   text-align: ${(p) => p.$textAlign};
   color: ${(p) => (p.$color ? p.theme.color[p.$color] : p.theme.color.default)};

@@ -1,5 +1,5 @@
 import { SpacingProps, FlexProps, CustomStylesProps } from '../../theme';
-import { StyledBlock } from './Form.styles';
+import { StyledForm } from './Form.styles';
 
 interface Props extends SpacingProps, FlexProps, CustomStylesProps {
   children: React.ReactNode;
@@ -8,12 +8,35 @@ interface Props extends SpacingProps, FlexProps, CustomStylesProps {
   onSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
 }
 
-export type StyledFormProps = Omit<Props, 'children'>;
-
-const Form: React.FC<Props> = (props) => (
-  <StyledBlock as="form" {...props}>
-    {props.children}
-  </StyledBlock>
+const Form: React.FC<Props> = ({
+  children,
+  width,
+  height,
+  mt,
+  mr,
+  mb,
+  ml,
+  pt,
+  pr,
+  pb,
+  pl,
+  customStyles,
+}) => (
+  <StyledForm 
+  $width={width}
+  $height={height}
+  $mt={mt}
+  $mr={mr}
+  $mb={mb}
+  $ml={ml}
+  $pt={pt}
+  $pr={pr}
+  $pb={pb}
+  $pl={pl}
+  $customStyles={customStyles}
+  >
+    {children}
+  </StyledForm>
 );
 
 export default Form;

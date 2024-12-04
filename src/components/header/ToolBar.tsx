@@ -55,9 +55,9 @@ const Toolbar: React.FC<Props> = function ({
         pl="m"
         customStyles={{ maxHeight: '100px' }}
       >
-        <Block display="flex" width="20%" onClick={() => toggleSideDrawer()}>
+        <Block display="flex" width="20%" >
           <Button
-            onClick={() => null}
+            onClick={() => dispatch(toggleSideDrawer())}
             type="button"
             variant="icon"
             iconSize="s"

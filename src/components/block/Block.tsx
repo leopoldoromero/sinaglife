@@ -40,6 +40,7 @@ const Block: React.FC<Props> = ({
     pb,
     pl,
     customStyles,
+    onClick,
 }) => (
   <BlockContainer
     $justify={justify}
@@ -65,6 +66,7 @@ const Block: React.FC<Props> = ({
     $pb={pb}
     $pl={pl}
     $customStyles={customStyles}
+    onClick={onClick}
   >
     {children}
   </BlockContainer>
