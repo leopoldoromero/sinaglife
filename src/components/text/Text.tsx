@@ -49,6 +49,7 @@ const Text: React.FC<Props> = ({
   pr,
   pb,
   pl,
+  customStyles,
 }) => (
   <TexContainer
     as={as}
@@ -71,6 +72,7 @@ const Text: React.FC<Props> = ({
     $pb={pb}
     $pl={pl}
     onClick={onClick}
+    $customStyles={customStyles}
   >
     {children}
   </TexContainer>

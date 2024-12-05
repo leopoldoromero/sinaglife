@@ -176,7 +176,7 @@ const SideDrawer = () => {
         {item.to ? (
           <CustomLink to={item.to} onClick={closeDrawerHandler}>
             {item.icon && <Icon color={item.isHovered ? 'earth' : 'white'} icon={item.icon} size="s" />}
-            <Text color={item.isHovered ? 'earth' : 'white'} ml={item.icon ? 'm' : 'xxl'}>
+            <Text color={item.isHovered ? 'earth' : 'white'} ml={item.icon ? 'm' : 'xxl'} fontSize='medium'>
               {item.title}
             </Text>
           </CustomLink>
@@ -188,6 +188,7 @@ const SideDrawer = () => {
               color={item.isHovered ? 'earth' : 'white'}
               ml={item.icon ? 's' : 'xxl'}
               cursor="pointer"
+              fontSize='medium'
             >
               {item.title}
             </Text>

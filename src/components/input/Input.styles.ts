@@ -1,5 +1,4 @@
 'use client'
-
 import styled, { css } from 'styled-components';
 import { ColorKeys, Size } from '../../theme';
 import { IconPlacement, InputProps, InputShape, InputVariant } from './Input';

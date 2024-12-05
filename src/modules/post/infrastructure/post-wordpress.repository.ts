@@ -2,6 +2,7 @@ import { HttpClient } from '@shared/infrastructure/AxiosHttpClient';
 import { Post } from '../domain/post';
 import { PostRepository } from '../domain/post.repository';
 import { environment, WP_POST_PATH } from '@shared/constants';
+import * as cheerio from 'cheerio';
 
 interface PostContentWordpressDto {content: {rendered: string}};
 interface PostWordpressDto {
@@ -18,11 +19,8 @@ interface PostWordpressDto {
 }
 
 function extractHtmlContent(renderedHtml: string, tag: string): string {
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = renderedHtml;
-  
-  const h4Element = tempDiv.querySelector(tag);
-  return  h4Element?.textContent || "";
+  const $ = cheerio.load(renderedHtml); // Load the HTML string
+  return $(tag).text() || '';
 }
 
 export class PostWordpressRepository implements PostRepository {

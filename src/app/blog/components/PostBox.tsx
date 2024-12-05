@@ -21,12 +21,12 @@ const PostBox: React.FC<Props> = function ({
     >
       <StyledCard>
         <StyledCardImageContainer
-          url={image.src}
+          $url={image.src}
         />
-        <Block display='flex' direction='column' justify='space-between' pt='m' pr='s' pb='m' pl='s'>
-          <Text color='green' textAlign='right' weight='bold' fontSize='large' pt='m' pr='m' pb='m' pl='m'>{subTitle}</Text>
-          <Text color='black' pr='m' pl='m' fontSize='medium' fontFamily='base'>{title}</Text>
-          <Text color='black' pt='s' pb='s'>{description}</Text>
+        <Block display='flex' direction='column' justify='space-between' pt='l' pr='s' pb='l' pl='s'>
+          <Text  color='greenMid' textAlign='right' weight='bold' fontSize='large' pt='m' pr='m' pb='m' pl='m'>{subTitle}</Text>
+          <Text as="h3" color='black' pr='m' pl='m' fontSize='tiny' fontFamily='base' textAlign='center'>{title}</Text>
+          <Text color='black' pt='s' pb='s' fontSize='tiny' textAlign='center'>{description}</Text>
         </Block>
       </StyledCard>
     </CustomLink>

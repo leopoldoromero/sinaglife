@@ -13,4 +13,5 @@ export { default as List } from './list/List';
 export { default as ListItem } from './list-item/ListItem';
 export { default as PageWrapper } from './page-wrapper/PageWrapper';
 export { default as SideDrawer } from './side-drawer/SideDrawer';
+export { default as Spinner } from './spinner/Spinner';
 export { default as Text } from './text/Text';

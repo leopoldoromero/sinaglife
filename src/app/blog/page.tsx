@@ -9,7 +9,7 @@ export default async function Blog() {
     const data: Array<Post> = await postRepository.getMany();
   return (
     <PageWrapper pageTitle="Blog" titleColor="black" pr='s' pl='s'>
-      <Text as="h2" fontSize="small" textAlign="center" weight="light" mb="s">
+      <Text as="h2" fontSize="tiny" textAlign="center" weight="light" mb="s" fontFamily="base">
         Los mejores artículos sobre el cuidado de tu ser:
       </Text>
       <Block display="flex" justify="center" align="center" flexWrap="wrap" customStyles={{'gap': '2rem'}}>

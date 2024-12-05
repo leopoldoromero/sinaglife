@@ -18,7 +18,7 @@ const PageWrapper: React.FC<Props> = ({ pageTitle, titleColor, children, as, ...
         mb="s"
         as={as ?? 'h1'}
         color={!titleColor ? 'earth' : titleColor}
-        fontSize="small"
+        fontSize="tiny"
         fontFamily="title"
         weight="medium"
         isUppercase

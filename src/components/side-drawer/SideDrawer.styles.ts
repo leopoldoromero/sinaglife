@@ -1,5 +1,4 @@
 'use client';
-
 import styled from 'styled-components';
 import List from '@components/list/List';
 

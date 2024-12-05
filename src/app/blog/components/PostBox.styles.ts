@@ -12,11 +12,11 @@ export const StyledCard = styled.div`
     position: relative;
 `
 
-export const StyledCardImageContainer = styled.div<{url: string}>`
+export const StyledCardImageContainer = styled.div<{$url: string}>`
     width: 100%;
     height: 100%;
     border-radius: 20px 0 0 20px;
     background-position: center center;
     background-size: cover;
-    background-image: url(${(p) => p.url});
+    background-image: url(${(p) => p.$url});
 `

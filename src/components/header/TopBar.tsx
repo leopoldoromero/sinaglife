@@ -4,8 +4,8 @@ const TopBar = () => (
   <Block display="flex" justify="center" pt="s" pb="s" bgColor="xLightSilver">
     <Text
       fontFamily="base2"
-      as="h4"
-      fontSize="m"
+      as="p"
+      fontSize="medium"
       weight="medium"
       color="black"
       customStyles={{ 'letter-spacing': '0.2rem' }}
