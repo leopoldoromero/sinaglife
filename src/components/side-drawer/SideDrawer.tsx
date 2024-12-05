@@ -120,6 +120,7 @@ const SideDrawer = () => {
   const dispatch = useDispatch<DispatchAction>();
 
   const hoverColorHandler = (x: number) => {
+    console.log('HOVER', x)
     const result = data.map((el) => {
       if (el.id === x) {
         return {
@@ -155,6 +156,7 @@ const SideDrawer = () => {
   };
 
   const closeDrawerHandler = () => {
+    console.log('Closing...')
     dispatch(toggleSideDrawer());
     collapseHandler();
   };

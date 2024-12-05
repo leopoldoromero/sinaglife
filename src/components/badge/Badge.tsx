@@ -39,7 +39,7 @@ const Badge: React.FC<Props> = ({
       {isVisible && (
         <Block position="absolute" customStyles={{ bottom: '15px', right: '-12px' }}>
           <BadgeContainer $bgColor={bgColor} $shape={shape}>
-            <Text fontSize="s" color={color ?? 'white'} weight="semiBold">
+            <Text fontSize="small" color={color ?? 'white'} weight="semiBold">
               {isGreater ? `${max}+` : value}
             </Text>
           </BadgeContainer>

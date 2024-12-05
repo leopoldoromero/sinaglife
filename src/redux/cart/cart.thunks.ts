@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import container from '../../DiContainer';
+import container from '../../modules/DiContainer';
 import { DefaultState } from '../store';
 import { retrieveCart } from './cart.slice';
 import { StorageHandlerHelper } from 'shared/helpers';

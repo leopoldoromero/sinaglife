@@ -18,7 +18,7 @@ const tagScales: Record<TextTags, Partial<Record<FontSizeNames, number>>> = {
   input: { tiny: 0.875, small: 1, base: 1.125, medium: 1.25, large: 1.375 },
 };
 
-type FontSizeNames = 'tiny' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
+export type FontSizeNames = 'tiny' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
 export const fontSize: Record<FontSizeNames, string> = {
   tiny: `${BASE_SIZE * 0.8}rem`,
   small: `${BASE_SIZE * 0.875}rem`,

@@ -43,6 +43,10 @@ export const ListItem: React.FC<Props> = ({
     pb,
     pl,
     customStyles,
+    onMouseEnter,
+    onMouseLeave,
+    onMouseOver,
+    onClick,
 }) => (
     <Wrapper 
     $fontSize={fontSize}
@@ -61,6 +65,10 @@ export const ListItem: React.FC<Props> = ({
     $pb={pb}
     $pl={pl}
     $customStyles={customStyles}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    onMouseOver={onMouseOver}
+    onClick={onClick}
     >
     {children}
     </Wrapper>

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FormikProps } from 'formik';
-import container from '../../DiContainer';
+import container from '../../modules/DiContainer';
 import { CreateUserInput, RemoveUserInput, UpdateUserInput, UserRepository } from '@modules/user/domain/UserRepository';
 import { routes } from 'shared/infrastructure/routes';
 import { NextRouter } from 'next/router';

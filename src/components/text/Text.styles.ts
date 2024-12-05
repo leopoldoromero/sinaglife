@@ -1,10 +1,10 @@
 'use client';
 
 import styled from 'styled-components';
-import { CustomStylesStyledProps, margin, MarginStyledProps } from '../../theme';
+import { CustomStylesStyledProps, FontSizeNames, margin, MarginStyledProps, padding, PaddingStyledProps } from '../../theme';
 
 export const TexContainer = styled.span<{
-  $fontSize?: string;
+  $fontSize?: FontSizeNames;
   $isUppercase?: boolean;
   $weight?: string;
   $textAlign?: string;
@@ -14,7 +14,7 @@ export const TexContainer = styled.span<{
   $whiteSpace?: string;
   $fontFamily?: string;
   $cursor?: string;
-} & MarginStyledProps & CustomStylesStyledProps>`
+} & MarginStyledProps & PaddingStyledProps & CustomStylesStyledProps>`
   text-transform: ${(p) => (p.$isUppercase ? 'uppercase' : 'none')};
   text-align: ${(p) => p.$textAlign};
   color: ${(p) => (p.$color ? p.theme.color[p.$color] : p.theme.color.default)};
@@ -25,6 +25,7 @@ export const TexContainer = styled.span<{
   cursor: ${(p) => p.$cursor ?? 'auto'};
   margin: 0;
   ${margin};
+  ${padding};
   ${(p) => p.theme.fontSizeGenerator(p.as, p.$fontSize)};
   font-weight: ${(p) => (p.$weight ? p.theme.weight[p.$weight] : 'normal')};
   ${(p) => p.$customStyles ?? ''};

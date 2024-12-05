@@ -9,16 +9,16 @@ import {
   Size,
   ColorKeys,
   FlexProps,
+  HTMLEvents,
 } from '../../theme';
 
-interface Props extends MarginProps, PaddingProps, FlexProps, CustomStylesProps {
+interface Props extends MarginProps, PaddingProps, FlexProps, CustomStylesProps, HTMLEvents<HTMLDivElement | HTMLAnchorElement> {
   to: string;
   children: React.ReactNode;
   color?: ColorKeys;
   hoverColor?: ColorKeys;
   fontSize?: Size;
   fontFamily?: string;
-  onClick?: (ev: React.MouseEvent<HTMLAnchorElement>) => void;
   isUppercase?: boolean;
   weight?: FontWeight;
 }
@@ -46,6 +46,7 @@ const CustomLink: React.FC<Props> = ({
     pb,
     pl,
     customStyles,
+    onClick,
 }) => (
   <Wrapper 
   $justify={justify}
@@ -69,7 +70,7 @@ const CustomLink: React.FC<Props> = ({
   $pl={pl}
   $customStyles={customStyles}
   >
-    <Link href={to}>{children}</Link>
+    <Link href={to} onClick={onClick}>{children}</Link>
   </Wrapper>
 );
 

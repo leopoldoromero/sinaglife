@@ -4,15 +4,16 @@ import {
   Cursor, 
   CustomStylesProps, 
   MarginProps, 
-  Size, 
   TextAlign, 
   ColorKeys, 
-  FontWeight 
+  FontWeight, 
+  PaddingProps,
+  FontSizeNames
 } from '../../theme';
 
-export interface Props extends MarginProps, CustomStylesProps {
+export interface Props extends MarginProps, PaddingProps, CustomStylesProps {
   children: React.ReactNode;
-  fontSize?: Size;
+  fontSize?: FontSizeNames;
   isUppercase?: boolean;
   weight?: FontWeight;
   textAlign?: TextAlign;
@@ -28,7 +29,7 @@ export interface Props extends MarginProps, CustomStylesProps {
 
 const Text: React.FC<Props> = ({
   children,
-  fontSize = 'm',
+  fontSize = 'base',
   isUppercase = false,
   weight,
   textAlign = 'justify',
@@ -44,6 +45,10 @@ const Text: React.FC<Props> = ({
   mr,
   mb,
   ml,
+  pt,
+  pr,
+  pb,
+  pl,
 }) => (
   <TexContainer
     as={as}
@@ -61,6 +66,10 @@ const Text: React.FC<Props> = ({
     $mr={mr}
     $mb={mb}
     $ml={ml}
+    $pt={pt}
+    $pr={pr}
+    $pb={pb}
+    $pl={pl}
     onClick={onClick}
   >
     {children}
