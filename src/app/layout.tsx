@@ -5,7 +5,7 @@ import StyledComponentsRegistry from "@lib/registry";
 import StyleProvider from "@theme/StyleProvider";
 import Header from "@components/header/Header";
 import ReduxProvider from "@redux/provider";
-import { Block, SideDrawer } from "@components/index";
+import { Block, Footer, SideDrawer } from "@components/index";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -45,6 +45,7 @@ export default function RootLayout({
               >
                 {children}
               </Block>
+              <Footer />
             </ReduxProvider>
           </StyleProvider>  
         </StyledComponentsRegistry>

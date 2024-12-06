@@ -3,6 +3,7 @@ import { UserRepository } from "@modules/user/domain/UserRepository";
 import { ApiUserRepository } from "@modules/user/infrastructure/ApiUserRepository";
 import { AxiosHttpClient } from "shared/infrastructure/AxiosHttpClient";
 import { PostWordpressRepository } from "./post/infrastructure/post-wordpress.repository";
+import { ApiProductRepository } from "./product/infrastructure/ApiProductRepository";
 
 export class Container {
   private bindMap = new Map<string, unknown>();
@@ -25,10 +26,12 @@ const axiosHttpClient = new AxiosHttpClient();
 const userRepository: UserRepository = new ApiUserRepository(axiosHttpClient);
 const cartRepository = new ApiCartRepository(axiosHttpClient);
 const postRepository= new PostWordpressRepository(axiosHttpClient);
+const productRepository = new ApiProductRepository(axiosHttpClient);
 
 container.bind('AxiosHttpClient', axiosHttpClient);
 container.bind('UserRepository', userRepository);
 container.bind('CartRepository', cartRepository);
 container.bind('PostRepository', postRepository);
+container.bind('ProductRepository', productRepository);
 
 export default container;

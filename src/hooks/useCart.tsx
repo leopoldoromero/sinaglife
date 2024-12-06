@@ -8,7 +8,7 @@ import { UserState } from '../redux/user/user.slice';
 import { selectUserState } from '../redux/user/user.selectors';
 import { Cart, CartItem } from '@modules/cart/domain/Cart';
 import { CartUpdateAction } from '@modules/cart/domain/CartRepository';
-import { Product } from '@modules/product/domain/product';
+import { Product } from '@modules/product/domain/Product';
 
 export interface UseCartOutput {
   cart: Cart | null;
