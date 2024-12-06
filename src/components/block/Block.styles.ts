@@ -1,5 +1,4 @@
 'use client';
-
 import styled from 'styled-components';
 import { CustomStylesStyledProps, flex, FlexStyledProps, margin, MarginStyledProps, padding, PaddingStyledProps } from '@theme/index';
 

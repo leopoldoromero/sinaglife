@@ -1,5 +1,4 @@
 'use client'
-
 import styled, { css } from 'styled-components';
 import { CustomStylesStyledProps, padding, PaddingStyledProps } from '../../theme';
 import { Position } from '../../theme';
@@ -16,6 +15,7 @@ const positionHandler = (isOpen: boolean, position?: Position) => {
       `;
     case 'left':
       return `
+        top: 0;
         transform: ${isOpen ? `translateX(0)` : `translateX(-100%)`};
         transition: transform ${transitionSpeed} ease;
       `;
@@ -24,14 +24,12 @@ const positionHandler = (isOpen: boolean, position?: Position) => {
         top: 0;
         transform: ${isOpen ? `translateX(0)` : `translateY(-100%)`};
         transition: transform ${transitionSpeed} ease;
-        width: 100%;
       `;
     case 'bottom':
       return `
         bottom: 0;
         transform: ${isOpen ? `translateX(0)` : `translateY(100%)`};
         transition: transform ${transitionSpeed} ease;
-        width: 100%;
       `;
     default:
       return `

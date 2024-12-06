@@ -1,5 +1,4 @@
 'use client';
-
 import styled, { css } from 'styled-components';
 import { ColorKeys, CustomStylesStyledProps, margin, MarginStyledProps } from '../../theme';
 import { IconSize } from './Icon';

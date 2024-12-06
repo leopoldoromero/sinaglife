@@ -39,7 +39,7 @@ export default function RootLayout({
               <Block
                 customStyles={{
                   flex: '1',
-                  marginTop: '130px',
+                  marginTop: '145px',
                   display: `block`,
                 }}
               >

@@ -6,10 +6,10 @@ import {
   PaddingProps,
   CustomStylesProps,
   FontWeight,
-  Size,
   ColorKeys,
   FlexProps,
   HTMLEvents,
+  FontSizeNames,
 } from '../../theme';
 
 interface Props extends MarginProps, PaddingProps, FlexProps, CustomStylesProps, HTMLEvents<HTMLDivElement | HTMLAnchorElement> {
@@ -17,7 +17,7 @@ interface Props extends MarginProps, PaddingProps, FlexProps, CustomStylesProps,
   children: React.ReactNode;
   color?: ColorKeys;
   hoverColor?: ColorKeys;
-  fontSize?: Size;
+  fontSize?: FontSizeNames;
   fontFamily?: string;
   isUppercase?: boolean;
   weight?: FontWeight;
@@ -31,7 +31,7 @@ const CustomLink: React.FC<Props> = ({
     justify,
     align,
     flexWrap,
-    fontSize = 'm',
+    fontSize = 'small',
     isUppercase = false,
     weight,
     color = 'default',

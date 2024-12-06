@@ -6,7 +6,6 @@ export default function Home() {
     <div >
       <main >
         <Image
-          
           src="/next.svg"
           alt="Next.js logo"
           width={180}

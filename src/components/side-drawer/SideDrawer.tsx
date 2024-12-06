@@ -176,7 +176,7 @@ const SideDrawer = () => {
         {item.to ? (
           <CustomLink to={item.to} onClick={closeDrawerHandler}>
             {item.icon && <Icon color={item.isHovered ? 'earth' : 'white'} icon={item.icon} size="s" />}
-            <Text color={item.isHovered ? 'earth' : 'white'} ml={item.icon ? 'm' : 'xxl'} fontSize='medium'>
+            <Text color={item.isHovered ? 'earth' : 'white'} ml={item.icon ? 'm' : 'xxl'} fontSize='large'>
               {item.title}
             </Text>
           </CustomLink>
@@ -209,7 +209,7 @@ const SideDrawer = () => {
           {item.list &&
             item.list.map((el, index) => (
               <ListItem isFlex key={index} justify="space-between" align="center" pt="s" pb="s" pl="xl">
-                <CustomLink onClick={closeDrawerHandler} hoverColor="white" to={el.to} fontSize="l" pl="xl">
+                <CustomLink onClick={closeDrawerHandler} hoverColor="white" to={el.to} fontSize="large" pl="xl">
                   {el.title}
                 </CustomLink>
               </ListItem>
@@ -222,7 +222,7 @@ const SideDrawer = () => {
   return (
     <>
       <Backdrop onClose={closeDrawerHandler} isVisible={isSideDrawerOpen} hasButton/> 
-      <Drawer isOpen={isSideDrawerOpen}  pt="l" pr="l" pb="l" pl="l" bgColor="drawer">
+      <Drawer position='left' isOpen={isSideDrawerOpen}  pt="l" pr="l" pb="l" pl="l" bgColor="drawer">
         <List>{renderList}</List>
       </Drawer>
     </>

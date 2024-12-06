@@ -1,5 +1,4 @@
 'use client';
-
 import styled, { css } from 'styled-components';
 import { margin, MarginStyledProps, padding, PaddingStyledProps, Shape, Size } from '../../theme';
 import { ButtonVariant } from './Button';
