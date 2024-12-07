@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import styled from 'styled-components';
 import { CustomStylesStyledProps, FontSizeNames, margin, MarginStyledProps, padding, PaddingStyledProps } from '../../theme';
 

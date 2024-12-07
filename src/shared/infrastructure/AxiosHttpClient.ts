@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { environment } from '../constants';
-import { CookieHandlerHelper, StorageHandlerHelper } from '../helpers';
+import { CookieHandlerHelper, StorageHandlerHelper } from '@shared/helpers';
 
 export type Response<T> = AxiosResponse<T>;
 export type RequestConfig = InternalAxiosRequestConfig;

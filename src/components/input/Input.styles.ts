@@ -56,13 +56,13 @@ const setStylesByVariant = (variant?: InputVariant) => {
 };
 
 export const Wrapper = styled.div<{
-  type: string;
-  variant?: InputVariant;
-  width?: string;
-  inputSize?: Size;
-  focusable?: boolean;
+  $type: string;
+  $variant?: InputVariant;
+  $width?: string;
+  $inputSize?: Size;
+  $focusable?: boolean;
 }>`
-  width: ${(p) => p.width && p.width};
+  width: ${(p) => p.$width && p.$width};
   font-family: ${(p) => p.theme.fontFamily.default};
   font-size: ${(p) => p.theme.fontSize.m};
   font-weight: ${(p) => p.theme.weight.medium};
@@ -75,13 +75,13 @@ export const Wrapper = styled.div<{
   display: inline-flex;
   align-items: center;
   text-align: start;
-  padding: ${(p) => (p.inputSize ? inputPaddingsBySize[p.inputSize] : 0)};
-  ${(p) => setStylesByVariant(p.variant)}
-  ${(p) => focusStyles(p.focusable)}
+  padding: ${(p) => (p.$inputSize ? inputPaddingsBySize[p.$inputSize] : 0)};
+  ${(p) => setStylesByVariant(p.$variant)}
+  ${(p) => focusStyles(p.$focusable)}
 `;
 
 export const InputContainer = styled.input.attrs(({ type }) => ({
-  type: type || 'password',
+  type: type,
 }))<InputProps>`
   border: 0;
   box-sizing: content-box;

@@ -18,7 +18,8 @@ export enum Colors {
   whatsapp = '#25d366',
   twitter = '#09aeec',
   green = '#5ebd23',
-  greenMid = '#048204'
+  greenMid = '#048204',
+  default = 'rgb(69, 85, 96);',
 }
 
 export const colors = Object.keys(Colors).reduce((acc, key) => {

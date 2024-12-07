@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { validateDiscountToCart, createCart, removeCart, updateCartItems } from './cart.thunks';
-import { StorageHandlerHelper } from 'shared/helpers';
 import { Cart } from '@modules/cart/domain/Cart';
+import { StorageHandlerHelper } from '@shared/helpers';
 
 export interface CartState {
   cart: Cart | null;

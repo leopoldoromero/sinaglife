@@ -7,8 +7,8 @@ import container from "@modules/DiContainer";
 import { ProductRepository } from "@modules/product/domain/ProductRepository";
 
 export default async function Home() {
-  const postRepository = container.get<ProductRepository>('ProductRepository');
-  const { products } = await postRepository.getMany({
+  const productRepository = container.get<ProductRepository>('ProductRepository');
+  const { products } = await productRepository.getMany({
     field: 'categories',
     value: 'mosaico',
   });

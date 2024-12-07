@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import useCart from '@hooks/useCart';
 import { Product } from '@modules/product/domain/Product';
@@ -6,7 +7,6 @@ import React from 'react';
 import { ProductCardContainer, StyledLink } from './ProductCard.styles';
 import { Block, Button, Text } from '@components/index';
 import { NumberHelper, StringHelper } from '@shared/helpers';
-import Image from 'next/image';
 import { CartUpdateAction } from '@modules/cart/domain/CartRepository';
 
 export interface Props {
@@ -31,7 +31,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     <ProductCardContainer display="flex" direction="column" align="center" justify="space-between" bgColor="white">
       <Block width="100%" height="60%" pt="s" pr="s" pb="s" pl="s">
         <StyledLink href={`${routes.STORE_PRODUCTS}/${product?.categories[0]}/${StringHelper.formateEmptySpacesToUrl(name)}`}>
-          <Image src={src} alt={alt} width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover'}}/>
+          <img src={src} alt={alt} width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover'}}/>
         </StyledLink>
       </Block>
       <Block width="100%" height="28%" pt="s" pr="s" pb="s" pl="s" display="flex" direction="column">

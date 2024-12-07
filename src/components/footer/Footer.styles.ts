@@ -1,5 +1,4 @@
 'use client'
-import Button from '@components/button/Button';
 import Image from 'next/image';
 import styled from 'styled-components';
 
