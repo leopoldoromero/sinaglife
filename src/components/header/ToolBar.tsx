@@ -34,7 +34,7 @@ const Toolbar: React.FC<Props> = function ({
     // dispatch(logOut());
     closeUserModalHandler();
   };
-
+  console.log('CArt LENGTH', cartLength, cart)
   useEffect(() => {
     setCartLength(getCartLength());
   }, []);

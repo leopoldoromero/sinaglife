@@ -26,11 +26,10 @@ const ImageSection: React.FC<Props> = ({ imagesArr, x, setX, imageHandler }) => 
         align="center"
         pr="m"
         justify={imagesArr?.length < 3 ? 'space-around' : 'space-between'}
-        width="20%"
       >
         {imagesArr && renderImages}
       </Block>
-      <Block width="80%" onClick={imageHandler}>
+      <Block onClick={imageHandler}>
         <MainImage src={imageArr[x]?.src} alt={imageArr[x]?.alt} />
       </Block>
     </ImageSectionContainer>

@@ -51,7 +51,7 @@ const InfoSection: React.FC<Props> = ({ product, currentPath }) => {
   const categoriesLinks = categoriesToLink.map((category, idx) => (
     <CustomLink
       key={idx}
-      fontSize="large"
+      fontSize="base"
       hoverColor="darkSilver"
       weight="medium"
       to={`${routes.STORE_PRODUCTS}/${StringHelper.formateEmptySpacesToUrl(category)}`}
@@ -72,17 +72,17 @@ const InfoSection: React.FC<Props> = ({ product, currentPath }) => {
           ))}
         </Block>
       </Block>
-      <Block mt="s">
-        <Text as="h2" fontSize="tiny" fontFamily="base" isUppercase mb="m" weight="medium">
+      <Block mt="m">
+        <Text as="h3" fontSize="tiny" fontFamily="base" isUppercase mb="m" weight="medium">
           {title}
         </Text>
-        <Text as="p" fontSize="large" fontFamily="base">
+        <Text as="p" fontSize="medium" fontFamily="base">
           {description}
         </Text>
       </Block>
       <MiddleContainer>
         <Block width="100%" display="flex" justify="space-between" align="center" mb="m">
-          <Text as="h3" weight="semiBold">
+          <Text as="h4" fontSize='tiny' weight="semiBold">
             {NumberHelper.formatAmount(price, 2)}€
           </Text>
           <Block>
@@ -94,7 +94,7 @@ const InfoSection: React.FC<Props> = ({ product, currentPath }) => {
               <Quantity quantity={quantity} handlerChangeQuantity={handlerChangeQuantity} />
             )}
           </Block>
-          <Block>
+          {/* <Block>
             {productSizes?.length && (
               <SizePicker
                 sizes={productSizes}
@@ -102,7 +102,7 @@ const InfoSection: React.FC<Props> = ({ product, currentPath }) => {
                 handleSelectSize={handleSelectSize}
               />
             )}
-          </Block>
+          </Block> */}
         </Block>
         <Block width="100%" display="flex">
           <Button

@@ -98,7 +98,7 @@ const Footer = function () {
         <Block width="100%" display="flex" justify="center" mb="m">
           <Block display="flex" direction="column" align="flex-start" width="100%">
             <Block display="flex" width="100%" mb="m">
-              <Text color="black" as="h4" fontSize="small" weight="bold" fontFamily="title" textAlign="center" isUppercase>
+              <Text color="black" as="h4" fontSize="tiny" weight="bold" fontFamily="title" textAlign="center" isUppercase>
                 Ayuda
               </Text>
             </Block>
@@ -115,7 +115,7 @@ const Footer = function () {
         </Block>
         <Block width="100%" display="flex" direction="column" align="flex-start" mb="m">
           <Block display="flex" width="100%" mb="m">
-            <Text color="black" as="h4" fontSize="small" weight="bold" fontFamily="title" textAlign="center" isUppercase>
+            <Text color="black" as="h4" fontSize="tiny" weight="bold" fontFamily="title" textAlign="center" isUppercase>
               Información
             </Text>
           </Block>
@@ -132,7 +132,7 @@ const Footer = function () {
         <Block width="100%" display="flex" justify="center" mb="m">
           <Block display="flex" direction="column" align="flex-start" justify="flex-start" width="100%">
             <Block display="flex" width="100%" mb="m">
-              <Text color="black" as="h4" fontSize="small" fontFamily="title" weight="bold" textAlign="center" isUppercase>
+              <Text color="black" as="h4" fontSize="tiny" fontFamily="title" weight="bold" textAlign="center" isUppercase>
                 Social
               </Text>
             </Block>

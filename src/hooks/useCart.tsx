@@ -23,7 +23,7 @@ export interface UseCartOutput {
 const useCart = (): UseCartOutput => {
   const { cart, isLoading } = useSelector<DefaultState, CartState>(selectCartState);
   const { user } = useSelector<DefaultState, UserState>(selectUserState);
-
+  console.log('CART FROM:::', cart)
   const dispatch = useDispatch<DispatchAction>();
   const cartItemCreator = (product: Product, qty: number, size?: string) => {
     const { id, name, images, price, code, stock } = product;

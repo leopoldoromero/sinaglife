@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  width: 100%;
   position: static;
   bottom: 0;
   left: 0;
