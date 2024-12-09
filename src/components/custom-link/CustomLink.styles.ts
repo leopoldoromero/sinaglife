@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CustomStylesStyledProps, flex, FlexStyledProps, margin, MarginStyledProps, padding, PaddingStyledProps } from '../../theme';
 
 export const Wrapper = styled.div<{
+    $width?: string;
     $fontSize: string;
     $fontFamily?: string;
     $isUppercase?: boolean;
@@ -10,7 +11,8 @@ export const Wrapper = styled.div<{
     $color: string;
     $weight?: string;
 } & FlexStyledProps & MarginStyledProps & PaddingStyledProps & CustomStylesStyledProps>`
-  a {
+ width: ${(p) => p.$width ?? null};  
+a {
     text-decoration: none !important;
     ${flex};
     ${(p) => p.theme.fontSizeGenerator('a', p.$fontSize)};

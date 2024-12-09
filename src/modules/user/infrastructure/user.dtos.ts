@@ -1,4 +1,4 @@
-export interface CreateUserRequestDTO {
+export interface CreateUserInput {
   name: string;
   lastName: string;
   birthDate: string;
@@ -6,12 +6,12 @@ export interface CreateUserRequestDTO {
   password: string;
 }
 
-export type UserLoginRequestDTO = {
+export type UserLoginInput = {
   email: string;
   password: string;
 };
 
-export type UserLoginResponseDTO = {
+export type UserLoginOutput = {
   id: string;
   name: string;
   lastName: string;
@@ -20,17 +20,17 @@ export type UserLoginResponseDTO = {
   token: string;
 };
 
-export type RecoveryPasswordRequestDTO = {
+export type RecoveryPasswordInput = {
   email: string;
 };
 
-export type ConfirmRecoveryPasswordRequestDTO = {
+export type ConfirmRecoveryPasswordInput = {
   email: string;
   newPassword: string;
   token: string;
 };
 
-export type UserUpdateRequestDTO = Partial<CreateUserRequestDTO> & { newPassword?: string };
+export type UserUpdateInput = Partial<CreateUserInput> & { newPassword?: string };
 
 export type RemoveRequestDTO = {
   email: string;

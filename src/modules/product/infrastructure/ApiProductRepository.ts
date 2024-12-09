@@ -8,7 +8,6 @@ export class ApiProductRepository implements ProductRepository {
     private endpoint: string = '/products';
   
     constructor(httpClient: HttpClient) {
-      console.log('HTTP', httpClient)
       this.httpClient = httpClient;
     }
   

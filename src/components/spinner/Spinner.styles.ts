@@ -26,9 +26,9 @@ const LoaderBaseStyles = css`
   position: fixed;
 `;
 
-export const SpinnerContainer = styled.div<{ top?: string }>`
+export const SpinnerContainer = styled.div<{ $top?: string }>`
   position: absolute;
-  top: ${(p) => p.top ?? ' 50%'};
+  top: ${(p) => p.$top ?? ' 50%'};
   display: flex;
   flex-direction: row;
   margin: -60px 50% 0 50%;

@@ -75,12 +75,13 @@ const setStyles = (variant: ButtonVariant, color?: string, disabled?: boolean) =
       `;
     default:
       return css`
-        background-color: ${disabled ? (p) => p.theme.color.mediumSilver : (p) => p.theme.color[color ?? 'black']};
+        background-color: ${(p) => p.theme.color[color ?? 'black']};
         border: 0;
-        color: ${disabled ? (p) => p.theme.color.mediumSilver : (p) => p.theme.color.black};
+        color: ${(p) => p.theme.color.black};
         &:disabled {
           opacity: 0.5;
         }
+        opacity:  ${disabled ? '0.5' : '1'};
         &:hover {
           opacity: 1;
           background-color: ${(p) => p.theme.color.white}10;

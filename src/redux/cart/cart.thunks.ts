@@ -3,7 +3,7 @@ import { DefaultState } from '../store';
 import { retrieveCart } from './cart.slice';
 import { snackbarActions } from '../snackbar/snackbar.slice';
 import { CartUpdateAction, CartValidateDiscountInput, CreateCartInput, GetCartByCustomerDTO, GetCartOutput, UpdateCartItemInput } from '@modules/cart/domain/CartRepository';
-import { addCustomerIdToCartAction, createCartAction, getCartAction, getCartByCustomerAction, removeCartAction, updateCartItemsAction, validateDiscountCartAction } from 'app/actions/cart.actions';
+import { addCustomerIdToCartAction, createCartAction, getCartAction, getCartByCustomerAction, removeCartAction, updateCartItemsAction, validateDiscountCartAction } from 'actions/cart.actions';
 
 export const createCart = createAsyncThunk<
   GetCartOutput,
@@ -12,7 +12,6 @@ export const createCart = createAsyncThunk<
 >('cart/create', async ({ cartData }, thunkApi) => {
   try {
     const createdCart: GetCartOutput = await createCartAction(cartData);
-    console.log('CREATE ITEMS', createdCart)
     thunkApi.dispatch(snackbarActions.success('Producto añadido al carrito'));
     return createdCart;
   } catch (error) {

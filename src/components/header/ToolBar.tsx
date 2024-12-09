@@ -14,6 +14,7 @@ import { Form, InputWithIcon } from '..';
 import Link from 'next/link';
 import { selectUIState } from '@redux/ui/ui.selector';
 import { toggleSearchInput, toggleSideDrawer, UIState } from '@redux/ui/ui.slice';
+import UserModal from './UserModal';
 
 interface Props {
   formik: FormikValues;
@@ -27,21 +28,15 @@ const Toolbar: React.FC<Props> = function ({
   const { cart, getCartLength } = useCart();
   const { user } = useSelector<DefaultState, UserState>(selectUserState);
   const { isVisibleSearchInput, isMobile } = useSelector<DefaultState, UIState>(selectUIState);
-
-  const [cartLength, setCartLength] = useState<number>(0);
   const closeUserModalHandler = () => setIsVisibleUserModal(false);
   const singOut = () => {
     // dispatch(logOut());
     closeUserModalHandler();
   };
-  console.log('CArt LENGTH', cartLength, cart)
-  useEffect(() => {
-    setCartLength(getCartLength());
-  }, []);
-
+  console.log('USUARIO', user)
   return (
     <>
-      {/* <UserModal isOpen={isVisibleUserModal} onClose={closeUserModalHandler} user={user} singOut={singOut} /> */}
+      <UserModal isOpen={isVisibleUserModal} onClose={closeUserModalHandler} user={user} singOut={singOut} />
       <Block
         width="100%"
         height="100%"
@@ -110,7 +105,7 @@ const Toolbar: React.FC<Props> = function ({
             </Badge>
           </Block>
           <Block display="flex" align="flex-end" justify="center" position="relative" pr="m">
-            <Badge size="s" value={cartLength} isVisible={cartLength > 0}>
+            <Badge size="s" value={getCartLength()} isVisible={getCartLength() > 0}>
               <Link href="/cesta">
                 <Button
                   onClick={() => null}

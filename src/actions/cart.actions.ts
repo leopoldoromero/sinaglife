@@ -9,6 +9,7 @@ const cartRepository = container.get<CartRepository>('CartRepository');
 export async function getCartAction(): Promise<Cart | null> {
     const cookieStore = await cookies();
     const cartId = cookieStore.get('cart_id')?.value;
+    console.log('COOKIES', cookieStore.getAll())
 
     if (cartId) {
         const cartOrNull = await cartRepository.get(cartId);

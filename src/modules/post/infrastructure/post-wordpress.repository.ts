@@ -43,7 +43,6 @@ export class PostWordpressRepository implements PostRepository {
   }
 
   async getMany(): Promise<Array<Post>> {
-    console.log('URL', this.URL)
     try {
       const res = await fetch(this.URL);
       const data = await res.json() as Array<PostWordpressDto>;

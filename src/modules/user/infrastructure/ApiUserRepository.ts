@@ -1,5 +1,6 @@
 import { HttpClient } from "shared/infrastructure/AxiosHttpClient";
 import { CreateUserInput, RemoveUserInput, UpdateUserInput, UserRepository } from "../domain/UserRepository";
+import { UserLoginInput, UserLoginOutput } from "./user.dtos";
 
 export class ApiUserRepository implements UserRepository {
     private httpClient: HttpClient;
@@ -24,5 +25,18 @@ export class ApiUserRepository implements UserRepository {
     async update(params: UpdateUserInput): Promise<void> {
       return this.httpClient.put(`${this.endpoint}`, params);
     }
+
+    async logIn(input: UserLoginInput): Promise<UserLoginOutput> {
+      return this.httpClient.post(`/login`, input);
+    }
+  
+    async logOut(): Promise<void> {
+      return this.httpClient.post(`/logout`);
+    }
+
+    async refreshFromJwt(): Promise<UserLoginOutput> {
+      return this.httpClient.get(`/refresh`);
+    }
+  
   }
   

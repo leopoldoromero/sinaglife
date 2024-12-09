@@ -21,6 +21,7 @@ interface Props extends MarginProps, PaddingProps, FlexProps, CustomStylesProps,
   fontFamily?: string;
   isUppercase?: boolean;
   weight?: FontWeight;
+  width?: string;
 }
 
 const CustomLink: React.FC<Props> = ({
@@ -47,8 +48,10 @@ const CustomLink: React.FC<Props> = ({
     pl,
     customStyles,
     onClick,
+    width,
 }) => (
   <Wrapper 
+  $width={width}
   $justify={justify}
   $display={display}
   $direction={direction}

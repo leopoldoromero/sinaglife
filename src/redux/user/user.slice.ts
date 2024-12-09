@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   createUser,
+  login,
+  logOut,
+  refreshJwt,
   removeUser,
   updateUser,
 } from './user.thunks';
@@ -25,6 +28,27 @@ export const userSlice = createSlice({
     },
   },
   extraReducers(builder) {
+    builder.addCase(refreshJwt.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(login.pending, (state, _) => {
+      state.isLoading = true;
+    });
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(login.rejected, (state, _) => {
+      state.isLoading = false;
+    });
+    builder.addCase(logOut.pending, (state, _) => {
+      state.isLoading = true;
+    });
+    builder.addCase(logOut.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.user = undefined;
+    });
     builder.addCase(createUser.pending, (state) => {
       state.isLoading = true;
     });

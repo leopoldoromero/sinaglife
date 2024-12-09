@@ -12,6 +12,12 @@ const Form: React.FC<Props> = ({
   children,
   width,
   height,
+  display,
+  direction,
+  justify,
+  align,
+  flexWrap,
+  onSubmit,
   mt,
   mr,
   mb,
@@ -25,6 +31,11 @@ const Form: React.FC<Props> = ({
   <StyledForm 
   $width={width}
   $height={height}
+  $display={display}
+  $direction={direction}
+  $justify={justify}
+  $align={align}
+  $flexWrap={flexWrap}
   $mt={mt}
   $mr={mr}
   $mb={mb}
@@ -34,6 +45,7 @@ const Form: React.FC<Props> = ({
   $pb={pb}
   $pl={pl}
   $customStyles={customStyles}
+  onSubmit={onSubmit}
   >
     {children}
   </StyledForm>

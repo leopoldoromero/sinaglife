@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { environment } from '../constants';
-import { CookieHandlerHelper, StorageHandlerHelper } from '@shared/helpers';
+import { getServerCookie } from 'actions/get-cookie.actions';
 
 export type Response<T> = AxiosResponse<T>;
 export type RequestConfig = InternalAxiosRequestConfig;
@@ -41,6 +41,7 @@ export class AxiosHttpClient implements HttpClient {
     this._initializeResponseInterceptor();
     this.instance.interceptors.request.use(this._addJwt);
     this.instance.interceptors.request.use(this._addSessionId);
+    this.instance.interceptors.request.use(this._handleRequest);
   }
 
   private _initializeResponseInterceptor = () => {
@@ -75,31 +76,40 @@ export class AxiosHttpClient implements HttpClient {
     return response;
   }
 
+  private _handleRequest = (data: any) => {
+    return data;
+  };
+
   private _handleResponse = ({ data }: AxiosResponse) => {
     return data;
   };
 
-  private _addJwt = (config: InternalAxiosRequestConfig) => {
-    const tokenOrNull = StorageHandlerHelper.retrieve('token');
-    config.headers = {
-      ...config.headers,
-      ...this.headers,
-    } as AxiosRequestHeaders;
-    if (tokenOrNull) {
-      config.headers['Authorization'] =  `Bearer ${tokenOrNull}`;
+  private _addJwt = async (config: InternalAxiosRequestConfig) => {
+    try {
+      const tokenOrNull = await getServerCookie('jwt');
+        config.headers = {
+        ...config.headers,
+        ...this.headers,
+      } as AxiosRequestHeaders;
+      if (tokenOrNull) {
+        config.headers['authorization'] = `Bearer ${tokenOrNull}`
+      }
+      return config;
+    } catch (error) {
+      console.error('Error retrieving JWT:', error);
+      return config; 
     }
-    return config;
   };
 
-  private _addSessionId = (config: InternalAxiosRequestConfig) => {
-    const sessionId = CookieHandlerHelper.get('sessionId');
+  private _addSessionId = async (config: InternalAxiosRequestConfig) => {
+    const sessionId = await getServerCookie('sessionId');
     config.headers = {
       ...config.headers,
       ...this.headers,
-      ...(sessionId && {
-        sessionId: `${sessionId}`,
-      }),
     } as AxiosRequestHeaders;
+    if (sessionId) {
+      config.headers['sessionId'] =  sessionId;
+    }
     return config;
   };
 

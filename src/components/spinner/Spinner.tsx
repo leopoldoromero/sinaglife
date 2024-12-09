@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Spinner: React.FC<Props> = ({ top }) => (
-  <SpinnerContainer top={top} data-testid="app-spinner">
+  <SpinnerContainer $top={top} data-testid="app-spinner">
     <LoaderLeft />
     <LoaderRight />
   </SpinnerContainer>

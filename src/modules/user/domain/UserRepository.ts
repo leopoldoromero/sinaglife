@@ -1,3 +1,4 @@
+import { UserLoginInput, UserLoginOutput } from "../infrastructure/user.dtos";
 import { User } from "./User";
 
 export interface CreateUserInput {
@@ -19,4 +20,7 @@ export interface UserRepository {
     create(params: CreateUserInput): Promise<void>;
     remove(params: RemoveUserInput): Promise<void>;
     update(params: UpdateUserInput): Promise<void>;
+    logIn(input: UserLoginInput): Promise<UserLoginOutput>;
+    logOut(): Promise<void>;
+    refreshFromJwt(): Promise<UserLoginOutput>;
 }
