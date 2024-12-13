@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { selectUIState } from '@redux/ui/ui.selector';
 import { toggleSearchInput, toggleSideDrawer, UIState } from '@redux/ui/ui.slice';
 import UserModal from './UserModal';
+import { logOut } from '@redux/user/user.thunks';
 
 interface Props {
   formik: FormikValues;
@@ -25,15 +26,14 @@ const Toolbar: React.FC<Props> = function ({
 }) {
   const [isVisibleUserModal, setIsVisibleUserModal] = useState(false);
   const dispatch = useDispatch<DispatchAction>();
-  const { cart, getCartLength } = useCart();
+  const { getCartLength } = useCart();
   const { user } = useSelector<DefaultState, UserState>(selectUserState);
   const { isVisibleSearchInput, isMobile } = useSelector<DefaultState, UIState>(selectUIState);
   const closeUserModalHandler = () => setIsVisibleUserModal(false);
   const singOut = () => {
-    // dispatch(logOut());
+    dispatch(logOut());
     closeUserModalHandler();
   };
-  console.log('USUARIO', user)
   return (
     <>
       <UserModal isOpen={isVisibleUserModal} onClose={closeUserModalHandler} user={user} singOut={singOut} />

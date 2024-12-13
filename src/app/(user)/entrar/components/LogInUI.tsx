@@ -30,7 +30,7 @@ interface Props {
     from: string;
 }
 
-const LogIn: React.FC<Props> = ({from}) => {
+const LogInUI: React.FC<Props> = ({from}) => {
   const redirectPath = from ?? '/';
   const { user, isLoading } = useSelector<DefaultState, UserState>(selectUserState);
   const dispatch = useDispatch<DispatchAction>();
@@ -168,4 +168,4 @@ const LogIn: React.FC<Props> = ({from}) => {
   );
 };
 
-export default LogIn;
+export default LogInUI;

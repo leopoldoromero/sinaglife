@@ -1,6 +1,6 @@
-import LogIn from "./components/LogIn";
+import LogInUI from "./components/LogInUI";
 
-export default function SignIn({
+export default function LogIn({
     searchParams,
   }: {
     searchParams: { from: string };
@@ -8,7 +8,7 @@ export default function SignIn({
     const decodeFromPath =  decodeURIComponent(searchParams.from)
     return (
       <div >
-          <LogIn from={decodeFromPath} />
+          <LogInUI from={decodeFromPath} />
       </div>
     );
   }

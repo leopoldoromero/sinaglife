@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { validateDiscountToCart, createCart, removeCart, updateCartItems } from './cart.thunks';
 import { Cart } from '@modules/cart/domain/Cart';
-import { StorageHandlerHelper } from '@shared/helpers';
+import { CookieHandlerHelper, StorageHandlerHelper } from '@shared/helpers';
 
 export interface CartState {
   cart: Cart | null;
@@ -68,7 +68,7 @@ const cartSlice = createSlice({
     });
     builder.addCase(removeCart.fulfilled, (state) => {
       state.cart = null;
-      StorageHandlerHelper.clear('cart_id');
+      CookieHandlerHelper.clear('cart_id');
     });
   },
 });

@@ -1,25 +1,25 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FormikProps } from 'formik';
-import container from '../../modules/DiContainer';
-import { CreateUserInput, RemoveUserInput, UpdateUserInput, UserRepository } from '@modules/user/domain/UserRepository';
+import { CreateUserInput, RemoveUserInput, UpdateUserInput } from '@modules/user/domain/UserRepository';
 import { routes } from 'shared/infrastructure/routes';
 import { snackbarActions } from '../snackbar/snackbar.slice';
 import { DefaultState } from '@redux/store';
 import { addCustomerId, getCart, getCartByCustomerId } from '@redux/cart/cart.thunks';
 import { clearCart, setCustomerId } from '@redux/cart/cart.slice';
 import { UserLoginInput, UserLoginOutput } from '@modules/user/infrastructure/user.dtos';
-import { logInAction, logOutAction, refreshJwtAction } from 'actions/user.actions';
+import { createUserAction, logInAction, logOutAction, refreshJwtAction, removeUserAction, updateUserAction } from 'actions/user.actions';
 import { navigate } from 'actions/navigate.actions';
-
-const userRepository = container.get<UserRepository>('UserRepository');
+import { ChangePasswordFormikState } from 'app/(user)/cambiar-contrasena/components/ChangePasswordUI';
+import { CreateUserFormikState } from 'app/(user)/registrarse/components/RegisterUserUI';
+import { DropOutFormikState } from 'app/(user)/darme-de-baja/components/DropOutPage';
 
 export const createUser = createAsyncThunk<
   unknown,
-  { userData: CreateUserInput; formik: FormikProps<unknown> },
+  { userData: CreateUserInput; formik: FormikProps<CreateUserFormikState> },
   { rejectValue: string }
 >('user/create', async ({ userData, formik }, thunkApi) => {
   try {
-    await userRepository.create(userData);
+    await createUserAction(userData);
     formik.resetForm();
     thunkApi.dispatch(snackbarActions.success('Registro exitoso, revise su bandeja de entrada o spam'));
   } catch (error) {
@@ -30,11 +30,11 @@ export const createUser = createAsyncThunk<
 
 export const updateUser = createAsyncThunk<
   unknown,
-  { userData: UpdateUserInput; formik: FormikProps<unknown> },
+  { userData: UpdateUserInput; formik: FormikProps<ChangePasswordFormikState> },
   { rejectValue: string }
 >('user/update', async ({ userData, formik }, thunkApi) => {
   try {
-    await userRepository.update(userData);
+    await updateUserAction(userData);
     formik.resetForm();
     thunkApi.dispatch(snackbarActions.success('Operacion exitosa'));
   } catch (error) {
@@ -45,13 +45,13 @@ export const updateUser = createAsyncThunk<
 
 export const removeUser = createAsyncThunk<
   unknown,
-  { userData: RemoveUserInput; formik: FormikProps<unknown>},
+  { userData: RemoveUserInput; formik: FormikProps<DropOutFormikState>},
   { rejectValue: string }
 >('user/remove', async ({ userData, formik }, thunkApi) => {
   try {
-    await userRepository.remove(userData);
+    await removeUserAction(userData);
     // TODO: commented while gets appplied
-    // thunkApi.dispatch(logOut());
+    thunkApi.dispatch(logOut());
     formik.resetForm();
     thunkApi.dispatch(snackbarActions.success('Operacion exitosa, revise su bandeja de entrada'));
     navigate(routes.BASE);
@@ -89,14 +89,14 @@ export const login = createAsyncThunk<
   }
 });
 
-export const logOut = createAsyncThunk<{}>('user/logOut', async (_, thunkApi) => {
+export const logOut = createAsyncThunk('user/logOut', async (_, thunkApi) => {
   await logOutAction();
   thunkApi.dispatch(clearCart());
   // StorageHandlerHelper.clear('token');
   // StorageHandlerHelper.clear('cart_id');
 });
 
-export const refreshJwt = createAsyncThunk<UserLoginOutput, {}, { rejectValue: string }>('user/refreshJwt', async (_, thunkApi) => {
+export const refreshJwt = createAsyncThunk<UserLoginOutput, null, { rejectValue: string }>('user/refreshJwt', async (_, thunkApi) => {
   try {
     const response = await refreshJwtAction();
     console.log('JWT', response)

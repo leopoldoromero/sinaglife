@@ -65,6 +65,7 @@ export const getCartByCustomerId = createAsyncThunk<unknown, { data: GetCartByCu
   async ({ data }, thunkApi) => {
     try {
       const cartOrNull = await getCartByCustomerAction(data.customerId);
+      console.log('BY CUSTOMER', cartOrNull)
       if (cartOrNull && cartOrNull.id) {
         thunkApi.dispatch(retrieveCart(cartOrNull));
       } 

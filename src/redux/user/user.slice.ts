@@ -8,6 +8,7 @@ import {
   updateUser,
 } from './user.thunks';
 import { User } from '@modules/user/domain/User';
+import { CookieHandlerHelper } from '@shared/helpers';
 
 export interface UserState {
   user?: User;
@@ -48,6 +49,7 @@ export const userSlice = createSlice({
     builder.addCase(logOut.fulfilled, (state, action) => {
       state.isLoading = false;
       state.user = undefined;
+      CookieHandlerHelper.clear('jwt');
     });
     builder.addCase(createUser.pending, (state) => {
       state.isLoading = true;
